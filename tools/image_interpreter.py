@@ -27,14 +27,14 @@ named_colors = {
     "VERDE": (0, 255, 0)
 }
 
-# Posiciones predefinidas (nombre → coordenadas)
 positions = {
-    "ARRIBA": (50, 50),
-    "ABAJO": (50, 450),
-    "CENTRO": (100, 250),
-    "IZQUIERDA_SUPERIOR": (10, 30),
-    "DERECHA_INFERIOR": (300, 470)
+    "ARRIBA": lambda w, h: (int(w * 0.05), int(h * 0.1)),
+    "ABAJO": lambda w, h: (int(w * 0.05), int(h * 0.9)),
+    "CENTRO": lambda w, h: (int(w * 0.3), int(h * 0.5)),
+    "IZQUIERDA_SUPERIOR": lambda w, h: (int(w * 0.01), int(h * 0.05)),
+    "DERECHA_INFERIOR": lambda w, h: (int(w * 0.7), int(h * 0.95))
 }
+
 
 def hex_to_bgr(hex_color):
     hex_color = hex_color.lstrip('#')
@@ -78,7 +78,8 @@ def interpretar_archivo(path):
             elif match := re.match(r'ESCRIBE\("([^"]+)",\s*(\w+)\)', line):
                 texto, pos = match.group(1), match.group(2).upper()
                 if current_image is not None and pos in positions:
-                    coordenadas = positions[pos]
+                    h, w = current_image.shape[:2]
+                    coordenadas = positions[pos](w, h)
                     cv2.putText(current_image, texto, coordenadas, cv2.FONT_HERSHEY_SIMPLEX, font_size, font_color, 2)
                 else:
                     print(f"[Error] Posición inválida o imagen no cargada: {pos}")
@@ -86,7 +87,8 @@ def interpretar_archivo(path):
             elif match := re.match(r'ESCRIBE_MULTILINEA\("([^"]+)",\s*"([^"]+)",\s*(\w+)\)', line):
                 texto1, texto2, pos = match.group(1), match.group(2), match.group(3).upper()
                 if current_image is not None and pos in positions:
-                    x, y = positions[pos]
+                    h, w = current_image.shape[:2]
+                    x, y = positions[pos](w, h)
                     spacing = int(30 * font_size)
                     cv2.putText(current_image, texto1, (x, y), cv2.FONT_HERSHEY_SIMPLEX, font_size, font_color, 2)
                     cv2.putText(current_image, texto2, (x, y + spacing), cv2.FONT_HERSHEY_SIMPLEX, font_size, font_color, 2)

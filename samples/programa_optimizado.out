@@ -1,4 +1,4 @@
-PON_IMAGEN("doge.jpg")
+PON_IMAGEN("doge_2.jpg")
 CAMBIA_COLOR_TEXTO(#FF0000)
 CAMBIA_TAMAÑO_TEXTO(30)
 ESCRIBE("Cuando haces un interprete", ARRIBA)
