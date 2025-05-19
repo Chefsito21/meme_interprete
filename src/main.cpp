@@ -5,6 +5,9 @@
 #include "lexer.h"
 #include "token_type.h"
 #include "parser.h"
+#include "optimizer.h"
+// #include "ast_visualizer.h"
+
 
 
 int main(int argc, char* argv[]) {
@@ -128,21 +131,23 @@ int main(int argc, char* argv[]) {
     // Parser
     Parser parser(tokens);
     parser.parse();
+    if (!parser.getErrors().empty()) return 1;
 
-    // // Errores
-    // std::vector<std::string> errores = parser.getErrors();
-    // if (!errores.empty()) {
-    //     std::ofstream errorOut("errores.out");
-    //     for (const auto& error : errores) {
-    //         std::cerr << error << std::endl;
-    //         errorOut << error << std::endl;
-    //     }
-    //     std::cerr << "Errores encontrados. Revisa 'errores.out'.\n";
-    //     return 1;
+    Optimizer opt;
+    opt.optimize(parser.ast, "../samples/programa_optimizado.out");
+
+    int status = std::system("python3 ../tools/image_interpreter.py");
+    if (status != 0) {
+        std::cerr << "Error al ejecutar el intérprete de imágenes." << std::endl;
+    }
+
+    // if (parser.getErrors().empty()) {
+    //     ASTVisualizer visualizer;
+    //     visualizer.exportToDot(parser.ast, "ast.dot");
+    //     std::cout << "AST exportado a ast.dot\n";
+    // } else {
+    //     std::cerr << "Errores encontrados. AST no exportado.\n";
     // }
-
-    // std::cout << "Análisis sintáctico completado sin errores.\n";
-    // // Aquí después puedes continuar con el optimizador, etc.
 
     return 0;
 }

@@ -4,6 +4,7 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
+                "/opt/homebrew/opt/opencv/include/opencv4",
                 "include/",
                 "lib/"
             ],

@@ -1,3 +1,9 @@
 # Formato: índice|lexema|tipo|línea|tipo_específico
-0|ESCRIBE_MULTILINEA|COMANDO|1|escribe_multilinea
-1|ABAJO|POSICION|1|-
+0|PON_IMAGEN|COMANDO|2|carga_imagen
+1|CAMBIA_COLOR_TEXTO|COMANDO|3|color_texto
+2|"ROJO"|COLOR|3|-
+3|CAMBIA_TAMAÑO_TEXTO|COMANDO|4|tamaño_texto
+4|ESCRIBE|COMANDO|5|escribe_texto
+5|ARRIBA|POSICION|5|-
+6|ABAJO|POSICION|6|-
+7|GUARDA_COMO|COMANDO|7|guardar_imagen

@@ -18,7 +18,7 @@ struct AFD {
     std::unordered_map<std::string, std::string> alphabet_map;
 
     void load_from_file(const std::string& filename);
-    std::string classify(char c) const;
+    std::string classify(char c, const std::string& state) const;
     std::string run(const std::string& input, size_t& length_matched) const;
 
 };

@@ -55,6 +55,14 @@ void Parser::parseCommand()
         {
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba una cadena con la ruta del archivo."));
+        } else {
+            Token argumento = previous();
+
+            if (comando.lexeme == "PON_IMAGEN") {
+                ast.push_back(std::make_shared<PonerImagen>(argumento.lexeme));
+            } else {
+                ast.push_back(std::make_shared<GuardaComo>(argumento.lexeme));
+            }                            
         }
     }
     else if (comando.lexeme == "CAMBIA_COLOR_TEXTO")
@@ -64,6 +72,9 @@ void Parser::parseCommand()
         {
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba un color válido (como 'ROJO' o '#FFFFFF')."));
+        } else {
+            Token arg = previous();
+            ast.push_back(std::make_shared<CambiarColorTexto>(arg.lexeme));
         }
     }
     else if (comando.lexeme == "CAMBIA_TAMAÑO_TEXTO")
@@ -80,15 +91,21 @@ void Parser::parseCommand()
             if (size < 10 || size > 30)
             {
                 errors.push_back(formatError(numero, "El tamaño del texto debe estar entre 10 y 30."));
+            } else {
+                ast.push_back(std::make_shared<CambiarTamanoTexto>(size));
             }
         }
     }
     else if (comando.lexeme == "ESCRIBE")
     {
+        std::string texto, pos;
+
         if (!match(Token::TokenType::CADENA))
         {
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba una cadena de texto como primer argumento."));
+        } else {
+            texto = previous().lexeme;
         }
 
         if (!match(Token::TokenType::SIMBOLO) || previous().lexeme != ",")
@@ -101,12 +118,21 @@ void Parser::parseCommand()
         {
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba una posición válida (ARRIBA, ABAJO, etc.) como segundo argumento."));
+        } else {
+            pos = previous().lexeme;
+        }
+
+        if (errors.empty()) {
+            ast.push_back(std::make_shared<Escribe>(texto, pos));
         }
     } else if (comando.lexeme == "ESCRIBE_MULTILINEA") {
+        std::string t1, t2, pos;
         // Primer argumento: cadena
         if (!match(Token::TokenType::CADENA)) {
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba una primera cadena de texto."));
+        } else {
+            t1 = previous().lexeme;
         }
     
         // Coma
@@ -119,6 +145,8 @@ void Parser::parseCommand()
         if (!match(Token::TokenType::CADENA)) {
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba una segunda cadena de texto."));
+        } else {
+            t2 = previous().lexeme;
         }
     
         // Coma
@@ -131,8 +159,22 @@ void Parser::parseCommand()
         if (!match(Token::TokenType::POSICION)) {
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba una posición válida (ARRIBA, ABAJO, etc.) como tercer argumento."));
+        } else {
+            pos = previous().lexeme;
+        }
+
+        if (errors.empty()) {
+            ast.push_back(std::make_shared<EscribeMultilinea>(t1, t2, pos));
+        }
+    } else if (comando.lexeme == "GUARDA_COMO") {
+        if (!match(Token::TokenType::CADENA)) {
+            errors.push_back(formatError(peek(), "Se esperaba una ruta entre comillas."));
+        } else {
+            Token arg = previous();
+            ast.push_back(std::make_shared<GuardaComo>(arg.lexeme));
         }
     }
+    
     
 
     while (!isAtEnd() && peek().lexeme != ")")
@@ -191,4 +233,8 @@ std::string Parser::formatError(const Token &t, const std::string &message) cons
 {
     return ERROR_COLOR BOLD "Error en línea " + std::to_string(t.line) +
            ", columna " + std::to_string(t.column) + RESET ": " + message;
+}
+
+std::vector<std::shared_ptr<ASTNode>> Parser::getAST() const {
+    return ast;
 }

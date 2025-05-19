@@ -1,1 +1,1 @@
-⟨COMANDO, 0⟩ ⟨(⟩ ⟨const, "hola"⟩ ⟨,⟩ ⟨const, "mundo"⟩ ⟨,⟩ ⟨POSICION, 1⟩ ⟨)⟩ 
+⟨COMANDO, 0⟩ ⟨(⟩ ⟨const, "doge.jpg"⟩ ⟨)⟩ ⟨COMANDO, 1⟩ ⟨(⟩ ⟨COLOR, 2⟩ ⟨)⟩ ⟨COMANDO, 3⟩ ⟨(⟩ ⟨num, 25⟩ ⟨)⟩ ⟨COMANDO, 4⟩ ⟨(⟩ ⟨const, "Cuando haces un intérprete"⟩ ⟨,⟩ ⟨POSICION, 5⟩ ⟨)⟩ ⟨COMANDO, 4⟩ ⟨(⟩ ⟨const, "para memes"⟩ ⟨,⟩ ⟨POSICION, 6⟩ ⟨)⟩ ⟨COMANDO, 7⟩ ⟨(⟩ ⟨const, "meme_resultado.jpg"⟩ ⟨)⟩ 

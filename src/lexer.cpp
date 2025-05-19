@@ -100,6 +100,10 @@ void Lexer::process_token()
     std::string match_type = afd_.run(fragment, length);
     std::string lexeme = fragment.substr(0, length);
 
+    // std::cout << "Lexema: " << lexeme << std::endl;
+    // std::cout << "Tipo de coincidencia: " << match_type << std::endl;
+    // std::cout << "Posición: " << pos_ << std::endl;
+    // std::cout << "Longitud: " << length << std::endl;
     if (match_type == "ID")
         add_token(Token::determine_token_type(lexeme), lexeme);
     else if (match_type == "NUMERO")

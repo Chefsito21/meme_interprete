@@ -4,6 +4,8 @@
 #include "token_type.h"
 #include <vector>
 #include <string>
+#include "ast.h"
+#include <memory>
 
 class Parser {
 public:
@@ -12,6 +14,8 @@ public:
     void parse(); // Comienza el análisis
     std::vector<std::string> getErrors() const;
 
+    std::vector<std::shared_ptr<ASTNode>> ast; 
+    std::vector<std::shared_ptr<ASTNode>> getAST() const;
 private:
     const std::vector<Token>& tokens;
     size_t current;

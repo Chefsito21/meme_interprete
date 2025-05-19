@@ -24,6 +24,22 @@ TEST_OBJS := $(patsubst $(TEST_DIR)/%.cpp,$(OBJ_DIR)/%.test.o,$(TEST_SRCS))
 TARGET := $(BIN_DIR)/main
 TEST_TARGET := $(BIN_DIR)/test
 
+# Nombre del archivo DOT y PNG
+DOT_FILE := ast.dot
+PNG_FILE := ast.png
+
+# Comando para abrir archivos según el SO
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    OPEN_CMD := xdg-open
+endif
+ifeq ($(UNAME_S),Darwin)
+    OPEN_CMD := open
+endif
+ifndef OPEN_CMD
+    OPEN_CMD := start
+endif
+
 # Reglas
 all: $(TARGET)
 
@@ -47,9 +63,19 @@ $(OBJ_DIR)/%.test.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# Generar imagen del AST desde archivo DOT
+dot: $(DOT_FILE)
+	dot -Tpng $(DOT_FILE) -o $(PNG_FILE)
+	@echo "AST generado como $(PNG_FILE)"
+
+# Generar imagen del AST desde archivo DOT y abrirlo
+view: dot
+	$(OPEN_CMD) $(PNG_FILE)
+	@echo "AST abierto en el visor de imágenes predeterminado"
+
 # Ejecutar programa principal
 run: all
-	./$(TARGET)
+	@./$(TARGET) $(FILE)
 
 # Ejecutar tests
 test: $(TEST_TARGET)
@@ -57,6 +83,6 @@ test: $(TEST_TARGET)
 
 # Limpiar
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf $(OBJ_DIR) $(BIN_DIR) $(PNG_FILE)
 
-.PHONY: all clean run test
+.PHONY: all clean run test dot view
