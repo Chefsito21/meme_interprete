@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
-
 import cv2
 import re
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+def cargar_imagen(nombre_archivo):
+    ruta_completa = os.path.join(script_dir, nombre_archivo)
+    imagen = cv2.imread(ruta_completa)
+    if imagen is None:
+        print(f"[Error] No se pudo cargar la imagen: {nombre_archivo}")
+    return imagen
 
 # Configuración global
 current_image = None
@@ -42,10 +51,12 @@ def interpretar_archivo(path):
 
             if match := re.match(r'PON_IMAGEN\("([^"]+)"\)', line):
                 ruta = match.group(1)
-                current_image = cv2.imread(ruta)
+                current_image = cargar_imagen(ruta)
                 if current_image is None:
+                    print(ruta)
                     print(f"[Error] No se pudo cargar la imagen: {ruta}")
                 else:
+                    print(ruta)
                     print(f"[OK] Imagen cargada: {ruta}")
 
             elif match := re.match(r'CAMBIA_COLOR_TEXTO\(?["\']?([#A-Z0-9]+)["\']?\)?', line, re.IGNORECASE):
