@@ -1,1 +1,1 @@
-⟨COMANDO, 0⟩ ⟨(⟩ ⟨num, 5⟩ ⟨)⟩ ⟨COMANDO, 0⟩ ⟨(⟩ ⟨const, "grande"⟩ ⟨)⟩ ⟨COMANDO, 1⟩ ⟨(⟩ ⟨const, "Hola"⟩ ⟨)⟩ ⟨COMANDO, 1⟩ ⟨(⟩ ⟨POSICION, 2⟩ ⟨,⟩ ⟨const, "Hola"⟩ ⟨)⟩ 
+⟨COMANDO, 0⟩ ⟨(⟩ ⟨const, "hola"⟩ ⟨,⟩ ⟨const, "mundo"⟩ ⟨,⟩ ⟨POSICION, 1⟩ ⟨)⟩ 

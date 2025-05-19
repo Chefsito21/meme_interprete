@@ -102,7 +102,38 @@ void Parser::parseCommand()
             Token t = peek();
             errors.push_back(formatError(t, "Se esperaba una posición válida (ARRIBA, ABAJO, etc.) como segundo argumento."));
         }
+    } else if (comando.lexeme == "ESCRIBE_MULTILINEA") {
+        // Primer argumento: cadena
+        if (!match(Token::TokenType::CADENA)) {
+            Token t = peek();
+            errors.push_back(formatError(t, "Se esperaba una primera cadena de texto."));
+        }
+    
+        // Coma
+        if (!match(Token::TokenType::SIMBOLO) || previous().lexeme != ",") {
+            Token t = previous();
+            errors.push_back(formatError(t, "Se esperaba ',' después de la primera cadena."));
+        }
+    
+        // Segundo argumento: cadena
+        if (!match(Token::TokenType::CADENA)) {
+            Token t = peek();
+            errors.push_back(formatError(t, "Se esperaba una segunda cadena de texto."));
+        }
+    
+        // Coma
+        if (!match(Token::TokenType::SIMBOLO) || previous().lexeme != ",") {
+            Token t = previous();
+            errors.push_back(formatError(t, "Se esperaba ',' después de la segunda cadena."));
+        }
+    
+        // Tercer argumento: posición
+        if (!match(Token::TokenType::POSICION)) {
+            Token t = peek();
+            errors.push_back(formatError(t, "Se esperaba una posición válida (ARRIBA, ABAJO, etc.) como tercer argumento."));
+        }
     }
+    
 
     while (!isAtEnd() && peek().lexeme != ")")
     {

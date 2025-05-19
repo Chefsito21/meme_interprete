@@ -1,4 +1,1 @@
-CAMBIA_TAMAÑO_TEXTO(5)          // Error: número fuera de rango
-CAMBIA_TAMAÑO_TEXTO("grande")   // Error: tipo incorrecto
-ESCRIBE("Hola")                 // Error: falta coma y posición
-ESCRIBE(ARRIBA, "Hola")         // Error: orden de argumentos
+ESCRIBE_MULTILINEA("hola", "mundo", ABAJO)

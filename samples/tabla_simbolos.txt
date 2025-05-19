@@ -1,4 +1,3 @@
 # Formato: índice|lexema|tipo|línea|tipo_específico
-0|CAMBIA_TAMAÑO_TEXTO|COMANDO|1|tamaño_texto
-1|ESCRIBE|COMANDO|3|escribe_texto
-2|ARRIBA|POSICION|4|-
+0|ESCRIBE_MULTILINEA|COMANDO|1|escribe_multilinea
+1|ABAJO|POSICION|1|-
