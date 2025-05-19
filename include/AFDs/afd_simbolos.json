@@ -1,0 +1,124 @@
+{
+  "alfabeto": {
+    "letra": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ",
+    "NUMERO": "0123456789",
+    "HEXADECIMAL": "0123456789abcdefABCDEF",
+    "SIMBOLO": "()!$,%&'*+-.:;<=>?@[\\]^`{|}~",
+    "guion_bajo": "_",
+    "comillas": "\"",
+    "barra": "/",
+    "numeral": "#",
+    "salto": "\n",
+    "espacio": " ",
+    "otro": "otro"
+  },
+  "estado_inicial": "q0",
+  "finales": {
+    "q1": "ID",
+    "q2": "ID",
+    "q6": "CADENA",
+    "q8": "COMENTARIO",
+    "q9": "NUMERO",
+    "q10": "SIMBOLO",
+    "q17": "COLOR_HEX"
+  },
+
+  "estados_trampado": {
+    "q3": "trampa"
+  },
+  "estados_error": {
+    "q4": "error"
+  },
+
+  "transiciones": {
+    "q0": {
+      "letra": "q1",
+      "comillas": "q5",
+      "barra": "q7",      
+      "NUMERO": "q9",
+      "otro": "q4",
+      "SIMBOLO": "q10",
+      "numeral": "q11"
+    },
+
+    "q1": {
+      "letra": "q1",
+      "NUMERO": "q1",
+      "guion_bajo": "q2",
+      "SIMBOLO": "q3",
+      "otro": "q4"
+    },
+    "q2": {
+      "letra": "q1",
+      "NUMERO": "q1",
+      "SIMBOLO": "q3",
+      "otro": "q4"
+    },
+
+    "q5": {
+      "letra": "q5",
+      "NUMERO": "q5",
+      "guion_bajo": "q5",
+      "SIMBOLO": "q5",
+      "espacio": "q5",
+      "comillas": "q6",
+      "otro": "q4"
+    },
+
+    "q7": {
+      "barra": "q8",
+      "letra": "q3",
+      "NUMERO": "q3",
+      "guion_bajo": "q3",
+      "SIMBOLO": "q3",
+      "otro": "q4"
+    },
+
+    "q8": {
+      "letra": "q8",
+      "NUMERO": "q8",
+      "guion_bajo": "q8",
+      "SIMBOLO": "q8",
+      "comillas": "q8",
+      "numeral": "q8",
+      "barra": "q8",
+      "otro": "q8"
+    },
+
+    "q9": {
+      "NUMERO": "q9",
+      "letra": "q3",
+      "guion_bajo": "q3",
+      "SIMBOLO": "q3",
+      "otro": "q4"
+    },
+
+    "q10": { },
+
+    "q11": {
+      "HEXADECIMAL": "q12",
+      "otro": "q4"
+    },
+    "q12": {
+      "HEXADECIMAL": "q13",
+      "otro": "q4"
+    },
+    "q13": {
+      "HEXADECIMAL": "q14",
+      "otro": "q4"
+    },
+    "q14": {
+      "HEXADECIMAL": "q15",
+      "otro": "q4"
+    },
+    "q15": {
+      "HEXADECIMAL": "q16",
+      "otro": "q4"
+    },
+    "q16": {
+      "HEXADECIMAL": "q17",
+      "otro": "q4"
+    },
+    "q17": {}
+  }
+}

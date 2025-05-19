@@ -1,0 +1,7 @@
+// Meme de prueba
+PON_IMAGEN("doge.jpg")
+CAMBIA_COLOR_TEXTO("ROJO")
+CAMBIA_TAMAÑO_TEXTO(25)
+ESCRIBE("Cuando haces un intérprete", ARRIBA)
+ESCRIBE("para memes", ABAJO)
+GUARDA_COMO("meme_resultado.jpg"
