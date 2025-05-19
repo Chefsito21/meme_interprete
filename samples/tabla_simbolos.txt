@@ -1,12 +1,9 @@
 # Formato: índice|lexema|tipo|línea|tipo_específico
 0|PON_IMAGEN|COMANDO|2|carga_imagen
-1|tools|ID|2|-
-2|doge|ID|2|-
-3|jpg|ID|2|-
-4|CAMBIA_COLOR_TEXTO|COMANDO|3|color_texto
-5|"ROJO"|COLOR|3|-
-6|CAMBIA_TAMAÑO_TEXTO|COMANDO|4|tamaño_texto
-7|ESCRIBE|COMANDO|5|escribe_texto
-8|ARRIBA|POSICION|5|-
-9|ABAJO|POSICION|6|-
-10|GUARDA_COMO|COMANDO|7|guardar_imagen
+1|CAMBIA_COLOR_TEXTO|COMANDO|3|color_texto
+2|"ROJO"|COLOR|3|-
+3|CAMBIA_TAMAÑO_TEXTO|COMANDO|4|tamaño_texto
+4|ESCRIBE|COMANDO|5|escribe_texto
+5|ARRIBA|POSICION|5|-
+6|ABAJO|POSICION|6|-
+7|GUARDA_COMO|COMANDO|7|guardar_imagen
