@@ -1,6 +1,6 @@
 PON_IMAGEN("doge.jpg")
 CAMBIA_COLOR_TEXTO(#FF0000)
-CAMBIA_TAMAÑO_TEXTO(25)
+CAMBIA_TAMAÑO_TEXTO(30)
 ESCRIBE("Cuando haces un interprete", ARRIBA)
 ESCRIBE("para memes", ABAJO)
 GUARDA_COMO("meme_resultado.jpg")
