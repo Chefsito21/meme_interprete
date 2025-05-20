@@ -1,5 +1,5 @@
 # Formato: índice|lexema|tipo|linea|tipo_especifico
-0|PON_IMAGEN|COMANDO|2|carga_imagen
+0|ON_IMAGEN|ID|2|-
 1|CAMBIA_COLOR_TEXTO|COMANDO|3|color_texto
 2|"ROJO"|COLOR|3|-
 3|CAMBIA_TAMAÑO_TEXTO|COMANDO|4|tamaño_texto

@@ -136,8 +136,8 @@ int main(int argc, char* argv[]) {
     Optimizer opt;
     opt.optimize(parser.ast, "../samples/programa_optimizado.out");
 
-    int status = std::system("python3 ../tools/image_interpreter.py");
-    // int status = std::system("python3 ../tools/image_interpreter_dot.py");
+    // int status = std::system("python3 ../tools/image_interpreter.py");
+    int status = std::system("python3 ../tools/image_interpreter_dot.py");
     if (status != 0) {
         std::cerr << "Error al ejecutar el intérprete de imágenes." << std::endl;
     }

@@ -47,7 +47,7 @@ void ASTVisualizer::exportToDot(const std::vector<std::shared_ptr<ASTNode>>& ast
             out << "    " << cmdNode << " -> " << rutaNode << ";\n";
         } else if (auto c = std::dynamic_pointer_cast<CambiarColorTexto>(cmd)) {
             cmdNode = createNode(out, "CAMBIA_COLOR_TEXTO");
-            std::string colorNode = createNode(out, "\"" + c->color + "\"");
+            std::string colorNode = createNode(out, c->color);
             out << "    " << cmdNode << " -> " << colorNode << ";\n";
         } else if (auto c = std::dynamic_pointer_cast<CambiarTamanoTexto>(cmd)) {
             cmdNode = createNode(out, "CAMBIA_TAMANO_TEXTO");
@@ -55,21 +55,21 @@ void ASTVisualizer::exportToDot(const std::vector<std::shared_ptr<ASTNode>>& ast
             out << "    " << cmdNode << " -> " << sizeNode << ";\n";
         } else if (auto c = std::dynamic_pointer_cast<Escribe>(cmd)) {
             cmdNode = createNode(out, "ESCRIBE");
-            std::string txtNode = createNode(out, "\"" + c->texto + "\"");
+            std::string txtNode = createNode(out, c->texto );
             std::string posNode = createNode(out, c->posicion);
             out << "    " << cmdNode << " -> " << txtNode << ";\n";
             out << "    " << cmdNode << " -> " << posNode << ";\n";
         } else if (auto c = std::dynamic_pointer_cast<EscribeMultilinea>(cmd)) {
             cmdNode = createNode(out, "ESCRIBE_MULTILINEA");
-            std::string l1 = createNode(out, "\"" + c->texto1 + "\"");
-            std::string l2 = createNode(out, "\"" + c->texto2 + "\"");
+            std::string l1 = createNode(out, c->texto1 );
+            std::string l2 = createNode(out, c->texto2 );
             std::string pos = createNode(out, c->posicion);
             out << "    " << cmdNode << " -> " << l1 << ";\n";
             out << "    " << cmdNode << " -> " << l2 << ";\n";
             out << "    " << cmdNode << " -> " << pos << ";\n";
         } else if (auto c = std::dynamic_pointer_cast<GuardaComo>(cmd)) {
             cmdNode = createNode(out, "GUARDA_COMO");
-            std::string pathNode = createNode(out, "\"" + c->ruta + "\"");
+            std::string pathNode = createNode(out, c->ruta);
             out << "    " << cmdNode << " -> " << pathNode << ";\n";
         }
 

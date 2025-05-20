@@ -7,7 +7,7 @@ digraph AST {
     node1 -> node2;
     node0 -> node1;
     node3 [label="CAMBIA_COLOR_TEXTO"];
-    node4 [label="\"\"ROJO\"\""];
+    node4 [label="\"ROJO\""];
     node3 -> node4;
     node0 -> node3;
     node5 [label="CAMBIA_TAMANO_TEXTO"];
@@ -15,19 +15,19 @@ digraph AST {
     node5 -> node6;
     node0 -> node5;
     node7 [label="ESCRIBE"];
-    node8 [label="\"\"Cuando haces un interprete\"\""];
+    node8 [label="\"Cuando haces un interprete\""];
     node9 [label="ARRIBA"];
     node7 -> node8;
     node7 -> node9;
     node0 -> node7;
     node10 [label="ESCRIBE"];
-    node11 [label="\"\"para memes\"\""];
+    node11 [label="\"(para memes)\""];
     node12 [label="ABAJO"];
     node10 -> node11;
     node10 -> node12;
     node0 -> node10;
     node13 [label="GUARDA_COMO"];
-    node14 [label="\"\"meme_resultado.jpg\"\""];
+    node14 [label="\"meme_resultado.jpg\""];
     node13 -> node14;
     node0 -> node13;
 }

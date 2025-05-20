@@ -1,7 +1,7 @@
 // Meme de prueba
-PON_IMAGEN("doge_2.jpg")
+ON_IMAGEN("doge_2.jpg")
 CAMBIA_COLOR_TEXTO("ROJO")
 CAMBIA_TAMAÑO_TEXTO(30)
 ESCRIBE("Cuando haces un interprete", ARRIBA)
-ESCRIBE("para memes", ABAJO)
+ESCRIBE("(para memes)", ABAJO)
 GUARDA_COMO("meme_resultado.jpg")
