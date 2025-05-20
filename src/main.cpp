@@ -6,7 +6,7 @@
 #include "token_type.h"
 #include "parser.h"
 #include "optimizer.h"
-// #include "ast_visualizer.h"
+#include "ast_visualizer.h"
 
 
 
@@ -137,17 +137,19 @@ int main(int argc, char* argv[]) {
     opt.optimize(parser.ast, "../samples/programa_optimizado.out");
 
     int status = std::system("python3 ../tools/image_interpreter.py");
+    // int status = std::system("python3 ../tools/image_interpreter_dot.py");
     if (status != 0) {
         std::cerr << "Error al ejecutar el intérprete de imágenes." << std::endl;
     }
 
-    // if (parser.getErrors().empty()) {
-    //     ASTVisualizer visualizer;
-    //     visualizer.exportToDot(parser.ast, "ast.dot");
-    //     std::cout << "AST exportado a ast.dot\n";
-    // } else {
-    //     std::cerr << "Errores encontrados. AST no exportado.\n";
-    // }
+    if (parser.getErrors().empty()) {
+        ASTVisualizer visualizer;
+        visualizer.exportToDot(parser.getAST(), "ast.dot");
+    } else {
+        for (const auto& err : parser.getErrors()) {
+            std::cerr << err << std::endl;
+        }
+    }
 
     return 0;
 }

@@ -3,7 +3,7 @@ digraph AST {
     rankdir=TB;
     node0 [label="Programa"];
     node1 [label="PON_IMAGEN"];
-    node2 [label="\"\"doge.jpg\"\""];
+    node2 [label="\"\"doge_2.jpg\"\""];
     node1 -> node2;
     node0 -> node1;
     node3 [label="CAMBIA_COLOR_TEXTO"];
@@ -11,11 +11,11 @@ digraph AST {
     node3 -> node4;
     node0 -> node3;
     node5 [label="CAMBIA_TAMANO_TEXTO"];
-    node6 [label="25"];
+    node6 [label="30"];
     node5 -> node6;
     node0 -> node5;
     node7 [label="ESCRIBE"];
-    node8 [label="\"\"Cuando haces un intérprete\"\""];
+    node8 [label="\"\"Cuando haces un interprete\"\""];
     node9 [label="ARRIBA"];
     node7 -> node8;
     node7 -> node9;

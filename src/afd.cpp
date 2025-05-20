@@ -79,16 +79,16 @@ std::string AFD::run(const std::string& input, size_t& length_matched) const {
     for (size_t i = 0; i < input.size(); ++i) {
         std::string category = classify(input[i], current_state);
         
-        std::cout << "Estado actual: " << current_state << std::endl;
-        std::cout << "Caracter: " << input[i] << " -> Categoria: " << category << std::endl;
+        // std::cout << "Estado actual: " << current_state << std::endl;
+        // std::cout << "Caracter: " << input[i] << " -> Categoria: " << category << std::endl;
         
         // verifica si existe transicion valida
         if (transitions.count(current_state) &&
             transitions.at(current_state).count(category)) {
             current_state = transitions.at(current_state).at(category);
-            std::cout << "Transicion: " << current_state << std::endl;
+            // std::cout << "Transicion: " << current_state << std::endl;
         } else {
-            std::cout << "NO HAY transicion valida. Estado actual: " << current_state << std::endl;
+            // std::cout << "NO HAY transicion valida. Estado actual: " << current_state << std::endl;
             break;
         }
 
@@ -96,17 +96,17 @@ std::string AFD::run(const std::string& input, size_t& length_matched) const {
         if (final_states.count(current_state)) {
             last_accept_state = current_state;
             last_accept_pos = i + 1;
-            std::cout << "Estado de ACEPTACION: " << current_state << std::endl;
+            // std::cout << "Estado de ACEPTACION: " << current_state << std::endl;
         }
 
         // si cae en un estado trampa o error, se detiene
         if (trap_states.count(current_state) || error_states.count(current_state)) {
-            std::cout << "Estado TRAMPA o de ERROR alcanzado: " << current_state << std::endl;
+            // std::cout << "Estado TRAMPA o de ERROR alcanzado: " << current_state << std::endl;
             break;
         }
     }
 
-    std::cout << "FIN de la cadena. Estado final: " << current_state << std::endl << std::endl;
+    // std::cout << "FIN de la cadena. Estado final: " << current_state << std::endl << std::endl;
 
     // si se alcanzo un estado de aceptacion, devuelve su token
     if (!last_accept_state.empty()) {

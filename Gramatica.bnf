@@ -1,0 +1,42 @@
+<programa> ::= { <linea> }
+<linea> ::= <comentario>
+          | <comando>
+<comentario> ::= "//" <cualquier_texto>
+
+<comando> ::= PON_IMAGEN "(" <ruta> ")"
+            | CAMBIA_COLOR_TEXTO "(" <color> ")"
+            | CAMBIA_TAMAÑO_TEXTO "(" <numero> ")"
+            | ESCRIBE "(" <texto> "," <posicion> ")"
+            | ESCRIBE_MULTILINEA "(" <lista_textos> "," <posicion> ")"
+            | GUARDA_COMO "(" <ruta> ")"
+
+<ruta> ::= <cadena>
+
+<texto> ::= <cadena>
+
+<lista_textos> ::= <cadena> { "," <cadena> }
+
+<cadena> ::= "\"" <contenido_texto> "\""
+
+<contenido_texto> ::= { cualquier_caracter_sin_comillas }
+
+<posicion> ::= ARRIBA
+             | ABAJO
+             | CENTRO
+             | IZQUIERDA_SUPERIOR
+             | DERECHA_INFERIOR
+
+<color> ::= <nombre_color>
+          | <codigo_hex>
+
+<nombre_color> ::= 
+    "BLANCO" | "NEGRO" | "ROJO" | "AZUL" | "VERDE" | "AMARILLO" | "CIAN" |
+    "MAGENTA" | "GRIS" | "GRIS_CLARO" | "NARANJA" | "ROSADO" | "LIMA" |
+    "VIOLETA" | "MARRON" | "OLIVA" | "TURQUESA" | "DORADO" | "PLATA" |
+    "AGUAMARINA" | "INDIGO" | "PURPURA" | "BEIGE" | "CREMA" | "MANTEQUILLA"
+
+<codigo_hex> ::= "#" <hex> <hex> <hex> <hex> <hex> <hex>
+
+<hex> ::= [0-9] | [A-F] | [a-f]
+<numero> ::= <digito> { <digito> }
+<digito> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"

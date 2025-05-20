@@ -1,4 +1,4 @@
-# Formato: índice|lexema|tipo|línea|tipo_específico
+# Formato: índice|lexema|tipo|linea|tipo_especifico
 0|PON_IMAGEN|COMANDO|2|carga_imagen
 1|CAMBIA_COLOR_TEXTO|COMANDO|3|color_texto
 2|"ROJO"|COLOR|3|-
