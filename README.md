@@ -27,7 +27,7 @@ El sistema consta de dos fases principales:
 2. Navega al directorio del proyecto:
 
    ```bash
-   cd meme_interprete
+   cd meme_interprete/build
    ```
 
 
@@ -45,7 +45,7 @@ El sistema consta de dos fases principales:
 Una vez compilado, puedes ejecutar el intérprete proporcionando un archivo `.meme` como entrada:
 
 ```bash
-./meme_interprete path/to/archivo.meme
+./bin/main path/to/archivo.meme
 ```
 
 
