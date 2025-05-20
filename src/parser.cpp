@@ -179,7 +179,7 @@ void Parser::parseCommand()
 
     while (!isAtEnd() && peek().lexeme != ")")
     {
-        advance(); // Aquí luego validaremos los argumentos
+        advance(); 
     }
 
     if (!match(Token::TokenType::SIMBOLO) || previous().lexeme != ")")
