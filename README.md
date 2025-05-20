@@ -1,6 +1,6 @@
 # MemeScript Interpreter
 
-Este proyecto es un intérprete para un lenguaje de scripting personalizado diseñado para generar memes, desarrollado como parte de una asignatura de compiladores.([GitHub][1])
+Este proyecto es un intérprete para un lenguaje de scripting personalizado diseñado para generar memes, desarrollado como parte de una asignatura de introducción a los compiladores.([GitHub][1])
 
 ## Descripción
 
